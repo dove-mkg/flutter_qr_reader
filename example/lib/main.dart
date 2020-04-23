@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_qr_reader/flutter_qr_reader.dart';
 import 'package:flutter_qr_reader_example/scanViewDemo.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(MyApp());
@@ -68,37 +67,27 @@ class _HomePageState extends State<HomePage> {
                   });
                 }
               },
-              child: Text("请求权限"),
+              child: Text("請求權限"),
               color: Colors.blue,
             ),
             FlatButton(
               onPressed: () async {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ScanViewDemo()));
               },
-              child: Text("独立UI"),
+              child: Text("獨立UI"),
             ),
-            FlatButton(
-                onPressed: () async {
-                  var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-                  if (image == null) return;
-                  final rest = await FlutterQrReader.imgScan(image);
-                  setState(() {
-                    data = rest;
-                  });
-                },
-                child: Text("识别图片")),
             FlatButton(
                 onPressed: () {
                   assert(_controller != null);
                   _controller.setFlashlight();
                 },
-                child: Text("切换闪光灯")),
+                child: Text("切換散光燈")),
             FlatButton(
                 onPressed: () {
                   assert(_controller != null);
                   _controller.startCamera(onScan);
                 },
-                child: Text("开始扫码（暂停后）")),
+                child: Text("開始編碼(暫停時)")),
             if (data != null) Text(data),
             if (isOk)
               Container(

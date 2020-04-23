@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'flutter_qr_reader.dart';
-import 'package:image_picker/image_picker.dart';
 
 /// 使用前需已经获取相关权限
 /// Relevant privileges must be obtained before use
@@ -106,18 +105,6 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
     return openFlashlight;
   }
 
-  Future _scanImage() async {
-    stopScan();
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    if (image == null) {
-      startScan();
-      return;
-    }
-    final rest = await FlutterQrReader.imgScan(image);
-    await widget.onScan(rest);
-    startScan();
-  }
-
   @override
   Widget build(BuildContext context) {
     final flashOpen = Image.asset(
@@ -140,7 +127,7 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
         final qrScanSize = constraints.maxWidth * widget.scanBoxRatio;
         final mediaQuery = MediaQuery.of(context);
         if (constraints.maxHeight < qrScanSize * 1.5) {
-          print("建议高度与扫码区域高度比大于1.5");
+          print("The ratio of height and frame is suggested to large than 1.5");
         }
         return Stack(
           children: <Widget>[
@@ -179,7 +166,7 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
                 alignment: Alignment.center,
                 child: DefaultTextStyle(
                   style: TextStyle(color: Colors.white),
-                  child: widget.helpWidget ?? Text("请将二维码置于方框中"),
+                  child: widget.helpWidget ?? Text("Please put pattern in the frame"),
                 ),
               ),
             ),
@@ -207,22 +194,6 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: _scanImage,
-                    child: Container(
-                      width: 45,
-                      height: 45,
-                      alignment: Alignment.center,
-                      child: Image.asset(
-                        "assets/tool_img.png",
-                        package: "flutter_qr_reader",
-                        width: 25,
-                        height: 25,
-                        color: Colors.white54,
-                      ),
-                    ),
-                  ),
                   Container(
                     width: 80,
                     height: 80,
