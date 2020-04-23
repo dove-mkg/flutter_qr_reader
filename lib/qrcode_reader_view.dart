@@ -186,7 +186,6 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
               ),
             ),
             Positioned(
-              width: constraints.maxWidth,
               bottom: constraints.maxHeight == mediaQuery.size.height
                       ? 12 + mediaQuery.padding.top
                       : 12,
