@@ -84,7 +84,7 @@ class _QrReaderViewState extends State<QrReaderView> {
         ].toSet(),
       );
     } else {
-      return Text('平台暂不支持');
+      return Text('Not supported');
     }
   }
 
@@ -125,18 +125,18 @@ class QrReaderViewController {
     }
   }
 
-  // 打开手电筒
+  // 打開手電筒
   Future<bool> setFlashlight() async {
     return _channel.invokeMethod("flashlight");
   }
 
-  // 开始扫码
+  // 開始掃碼
   Future startCamera(ReadChangeBack onQrBack) async {
     this.onQrBack = onQrBack;
     return _channel.invokeMethod("startCamera");
   }
 
-  // 结束扫码
+  // 結束掃碼
   Future stopCamera() async {
     return _channel.invokeMethod("stopCamera");
   }
