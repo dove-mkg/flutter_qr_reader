@@ -186,14 +186,13 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
               ),
             ),
             Positioned(
+              width: constraints.maxWidth,
               bottom: constraints.maxHeight == mediaQuery.size.height
                       ? 12 + mediaQuery.padding.top
                       : 12,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
+              child: 
+                Center(
+                  child: Container(
                     width: 80,
                     height: 80,
                     decoration: BoxDecoration(
@@ -209,8 +208,7 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
                       color: Colors.white54,
                     ),
                   ),
-                ],
-              ),
+                ),
             )
           ],
         );
