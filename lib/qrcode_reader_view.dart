@@ -186,25 +186,25 @@ class QrcodeReaderViewState extends State<QrcodeReaderView>
               ),
             ),
             Positioned(
-              left: 0,
-              right: 0,
               bottom: constraints.maxHeight == mediaQuery.size.height
                       ? 12 + mediaQuery.padding.top
                       : 12,
-              child: Container(
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(40)),
-                  border: Border.all(color: Colors.white30, width: 12),
-                ),
-                alignment: Alignment.center,
-                child: Image.asset(
-                  "assets/tool_qrcode.png",
-                  package: "flutter_qr_reader",
-                  width: 35,
-                  height: 35,
-                  color: Colors.white54,
+              child: Center(
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(40)),
+                    border: Border.all(color: Colors.white30, width: 12),
+                  ),
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    "assets/tool_qrcode.png",
+                    package: "flutter_qr_reader",
+                    width: 35,
+                    height: 35,
+                    color: Colors.white54,
+                  ),
                 ),
               ),
             )
