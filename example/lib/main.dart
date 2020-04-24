@@ -72,7 +72,12 @@ class _HomePageState extends State<HomePage> {
             ),
             FlatButton(
               onPressed: () async {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ScanViewDemo()));
+                Map<PermissionGroup, PermissionStatus> permissions =
+                    await PermissionHandler().requestPermissions([PermissionGroup.camera]);
+                print(permissions);
+                if (permissions[PermissionGroup.camera] == PermissionStatus.granted) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ScanViewDemo()));
+                }
               },
               child: Text("獨立UI"),
             ),
